@@ -125,4 +125,6 @@ void loop() {
   display.println("Perdidos: " + String(perdidos));
   display.println("Perdida: " + porcentaje);
   display.display();
+  display.println("RSSI: " + String(rssi, 1) + " dBm");
+  display.println("SNR: " + String(snr, 1) + " dB");
 }

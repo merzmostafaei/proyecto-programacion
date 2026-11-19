@@ -86,6 +86,11 @@ void loop() {
   long numero = mensaje.substring(mensaje.lastIndexOf(';') + 1).toInt();
 
   recibidos++;
+  
+  // Calidad de la señal del ultimo mensaje
+  float rssi = radio.getRSSI();   // potencia de la señal (dBm)
+  float snr = radio.getSNR();     // relacion señal/ruido (dB)
+  Serial.println("RSSI: " + String(rssi, 1) + " dBm  SNR: " + String(snr, 1) + " dB");
   Serial.println("Mensaje recibido: " + String(numero));
 
   // Comprobar la secuencia
@@ -121,10 +126,9 @@ void loop() {
   display.println("RECEPTOR NODO09");
   display.println("-----------------");
   display.println("Mensaje N: " + String(numero));
-  display.println("Recibidos: " + String(recibidos));
-  display.println("Perdidos: " + String(perdidos));
-  display.println("Perdida: " + porcentaje);
-  display.display();
-  display.println("RSSI: " + String(rssi, 1) + " dBm");
-  display.println("SNR: " + String(snr, 1) + " dB");
+  
+  // Calidad de la señal del ultimo mensaje
+  float rssi = radio.getRSSI();   // potencia de la señal (dBm)
+  float snr = radio.getSNR();     // relacion señal/ruido (dB)
+  Serial.println("RSSI: " + String(rssi, 1) + " dBm  SNR: " + String(snr, 1) + " dB");
 }
